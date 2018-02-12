@@ -1,0 +1,954 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Week 14 - More Node, Middleware and Dynamo · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="lesson4.html" />
+    
+    
+    <link rel="prev" href="lesson2.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../lesson0.html">
+            
+                <a href="../lesson0.html">
+            
+                    
+                    Week 0
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    HTML/CSS
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../html-css/lesson1.html">
+            
+                <a href="../html-css/lesson1.html">
+            
+                    
+                    Week 1 - Semantic HTML and CSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../html-css/lesson2.html">
+            
+                <a href="../html-css/lesson2.html">
+            
+                    
+                    Week 2 - Responsive Web and layout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../html-css/lesson3.html">
+            
+                <a href="../html-css/lesson3.html">
+            
+                    
+                    Week 3 - Frameworks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../html-css/coding-101.html">
+            
+                <a href="../html-css/coding-101.html">
+            
+                    
+                    Coding 101
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    JavaScript Core
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../js-core/lesson1.html">
+            
+                <a href="../js-core/lesson1.html">
+            
+                    
+                    Week 4 - Hello JavaScript
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../js-core/lesson2.html">
+            
+                <a href="../js-core/lesson2.html">
+            
+                    
+                    Week 5 - Arrays and Objects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../js-core/lesson3.html">
+            
+                <a href="../js-core/lesson3.html">
+            
+                    
+                    Week 6 - Unit Testing and TDD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../js-core/lesson3.5.html">
+            
+                <a href="../js-core/lesson3.5.html">
+            
+                    
+                    Week 7 - Pair Programming Day
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    JavaScript Core II
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../js-core-2/lesson4.html">
+            
+                <a href="../js-core-2/lesson4.html">
+            
+                    
+                    Week 8 - JS in the Browser
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../js-core-2/lesson5.html">
+            
+                <a href="../js-core-2/lesson5.html">
+            
+                    
+                    Week 9 - Good design and OO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../js-core-2/lesson6.html">
+            
+                <a href="../js-core-2/lesson6.html">
+            
+                    
+                    Week 10 - More Arrays and ES6
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../js-core-2/lesson7.html">
+            
+                <a href="../js-core-2/lesson7.html">
+            
+                    
+                    Week 11 - More Objects and core JS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Node and DB
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="lesson1.html">
+            
+                <a href="lesson1.html">
+            
+                    
+                    Week 12 - Node and Express 101
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="lesson2.html">
+            
+                <a href="lesson2.html">
+            
+                    
+                    Week 13 - Templating and APIs 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.3" data-path="lesson3.html">
+            
+                <a href="lesson3.html">
+            
+                    
+                    Week 14 - More Node, Middleware and Dynamo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="lesson4.html">
+            
+                <a href="lesson4.html">
+            
+                    
+                    Week 15 - MongoDB
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="lesson5.html">
+            
+                <a href="lesson5.html">
+            
+                    
+                    Week 16 - Mongoose
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" >
+            
+                <span>
+            
+                    
+                    Week 17 - Node/DB Recap
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    React
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../react/lesson1.html">
+            
+                <a href="../react/lesson1.html">
+            
+                    
+                    Week 18
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../react/lesson2.html">
+            
+                <a href="../react/lesson2.html">
+            
+                    
+                    Week 19
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../react/lesson3.html">
+            
+                <a href="../react/lesson3.html">
+            
+                    
+                    Week 20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../react/lesson4.html">
+            
+                <a href="../react/lesson4.html">
+            
+                    
+                    Week 21
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../house-rules.html">
+            
+                <a href="../house-rules.html">
+            
+                    
+                    House Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../PRACTICES.html">
+            
+                <a href="../PRACTICES.html">
+            
+                    
+                    Coding Standards and Best Practices
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../CONTRIBUTING.html">
+            
+                <a href="../CONTRIBUTING.html">
+            
+                    
+                    Contributing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../lesson-template.html">
+            
+                <a href="../lesson-template.html">
+            
+                    
+                    Lesson Template
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Week 14 - More Node, Middleware and Dynamo</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p><img src="https://img.shields.io/badge/status-draft-darkred.svg" alt=""> </p>
+<h1 id="node-3">Node 3</h1>
+<p><strong>What we will learn today?</strong></p>
+<ul>
+<li>Recap</li>
+<li>Transfering files to server</li>
+<li>Saving data to file</li>
+<li>Persisting Data - Intro to DB</li>
+<li>Express Generator</li>
+<li>Middleware</li>
+</ul>
+<hr>
+<h1 id="recap">Recap</h1>
+<p>What did we do <a href="https://github.com/CodeYourFuture/syllabus/blob/scotland/node-db/lesson2.md" target="_blank">last time</a>? 
+Do you remember anything from our <a href="https://github.com/Michael-Antczak/Introduction-to-Amazon-Web-Services" target="_blank">AWS class</a>? </p>
+<h3 id="exercise">Exercise</h3>
+<ol>
+<li>clone <a href="https://github.com/CodeYourFuture/Express-workshop-3" target="_blank">Express workshop 3 project</a> as a starting point for today</li>
+<li>replace the title heading with your name</li>
+<li>start the local server and check in the browser that it all works properly</li>
+<li>walk through the code, so we all understand what is in there</li>
+</ol>
+<h3 id="exercise---ami">Exercise - AMI</h3>
+<ol>
+<li>make sure you have access to the AWS keys</li>
+<li>spin up a server using Habiiba&apos;s AMI</li>
+<li>ssh to the server and verify that Node.js is installed</li>
+<li>go to the IP address in the browser</li>
+</ol>
+<h1 id="transfering-files-to-server">Transfering files to server</h1>
+<h3 id="exercise---ftp">Exercise - ftp</h3>
+<ol>
+<li>download <a href="https://filezilla-project.org/download.php?type=client" target="_blank">FileZilla</a></li>
+<li>open FileZilla</li>
+<li>setup up a <a href="https://stackoverflow.com/questions/16744863/connect-to-amazon-ec2-file-directory-using-filezilla-and-sftp" target="_blank">connection to EC2</a></li>
+<li>upload (maybe everything exept <code>node_modules</code> folder and the run <code>npm install</code> on server)</li>
+<li>start the server with <code>npm start</code>. Does it work? Why not? (Hint: what is the port?)</li>
+<li>make small changes locally, upload and verify in the browser</li>
+</ol>
+<h1 id="saving-data-to-file">Saving data to file</h1>
+<h3 id="exercise---save-new-post-to-file">Exercise - save new post to file</h3>
+<p>We want to have an ability to create a new post when we go to <code>/admin</code>. When we click <code>Send</code> we want to add the new post to <code>data/posts.json</code>. Go!</p>
+<ol>
+<li>add <code>body-parser</code> to the project</li>
+<li>add the following lines inside the <code>server.js</code><pre class="language-"><code class="lang-js"> app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>bodyParser<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+ app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>bodyParser<span class="token punctuation">.</span><span class="token function">urlencoded</span><span class="token punctuation">(</span><span class="token punctuation">{</span> extended<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
+<li>go to <code>admin.handlebars</code> and change the type of button from submit to just button. Why? </li>
+<li>add <code>id=&quot;addPostButton&quot;</code> to the button</li>
+<li><p>create a new JS file inside <code>js</code> folder called <code>add-post.js</code></p>
+<pre class="language-"><code class="lang-js"> <span class="token keyword">var</span> addPostButton <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">&apos;#addPostButton&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ addPostButton<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">&apos;click&apos;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+     <span class="token keyword">const</span> title <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;title&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+     <span class="token keyword">const</span> summary <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;summary&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+     <span class="token keyword">const</span> contents <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;contents&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+
+     <span class="token comment" spellcheck="true">// create data object</span>
+     <span class="token keyword">const</span> postData<span class="token operator">=</span> <span class="token punctuation">{</span>
+         title<span class="token punctuation">:</span> title<span class="token punctuation">,</span>
+         summary<span class="token punctuation">:</span> summary<span class="token punctuation">,</span>
+         contents<span class="token punctuation">:</span> contents
+     <span class="token punctuation">}</span>
+
+     <span class="token comment" spellcheck="true">// AJAX</span>
+     <span class="token keyword">var</span> url <span class="token operator">=</span> <span class="token string">&apos;/admin&apos;</span><span class="token punctuation">;</span>
+     <span class="token keyword">var</span> oReq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+     oReq<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">&apos;load&apos;</span><span class="token punctuation">,</span> onLoad<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     oReq<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">&apos;POST&apos;</span><span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token comment" spellcheck="true">//Send the proper header information along with the request</span>
+     oReq<span class="token punctuation">.</span><span class="token function">setRequestHeader</span><span class="token punctuation">(</span><span class="token string">&quot;Content-type&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;application/json&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     oReq<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>postData<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ <span class="token keyword">function</span> <span class="token function">onLoad</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token comment" spellcheck="true">// clear form </span>
+     document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;title&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+     document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;summary&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+     document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;contents&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+
+     <span class="token comment" spellcheck="true">// redirect to main page</span>
+     window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href <span class="token operator">=</span> <span class="token string">&apos;/&apos;</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+</code></pre>
+</li>
+<li>link the file inside the HTML code</li>
+<li><p>add <code>post</code> route for <code>/admin</code>. This is where we going to process the form data</p>
+<pre class="language-"><code class="lang-js"> app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">&apos;/admin&apos;</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+     <span class="token keyword">const</span> filePath <span class="token operator">=</span> __dirname <span class="token operator">+</span> <span class="token string">&apos;/data/posts.json&apos;</span><span class="token punctuation">;</span>
+
+     <span class="token keyword">const</span> cb <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         <span class="token comment" spellcheck="true">// we call .toString() to turn the file buffer to a String</span>
+         <span class="token keyword">const</span> fileData <span class="token operator">=</span> file<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token comment" spellcheck="true">// we use JSON.parse to get an object out the String</span>
+         <span class="token keyword">const</span> postsJson <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>fileData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token comment" spellcheck="true">// add new post to the file</span>
+         postsJson<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+         <span class="token comment" spellcheck="true">// write back to file</span>
+         fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span>filePath<span class="token punctuation">,</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>postsJson<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+             <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token keyword">throw</span> err<span class="token punctuation">;</span>
+             console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;The file has been saved!&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+         res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token string">&quot;Success.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+     fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>filePath<span class="token punctuation">,</span> cb<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
+<li>push to server</li>
+</ol>
+<h3 id="exercise---handle-page-not-found">Exercise - Handle &quot;Page Not Found&quot;</h3>
+<blockquote>
+<p>Try to navigate to a url that doesn&apos;t exist. What do you get? Open the <strong>Developer tools</strong> and check what status code do you get back.</p>
+</blockquote>
+<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">&apos;404&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h1 id="persisting-data---introduction-to-databases">Persisting Data - Introduction to Databases</h1>
+<p>What is wrong with the solution above? Why is it not a good idea to save the data to the server&apos;s local file? What would happen if you restart the server, or kill it and spin up another one?  Discuss. </p>
+<p>Let&apos;s look at the <a href="https://aws.amazon.com/products/databases/" target="_blank">AWS Database</a> section. What types of data storage can you see? What are the main two groups? </p>
+<p><img src="assets/SQL-vs.-NoSQL-Comparative-Advantages-and-Disadvantages.jpg" alt="">
+<img src="assets/NoSQL-vs-SQL.png" alt="">
+<img src="assets/SQL-MongoDB-Correspondence.PNG" alt="SQL to Mongo"></p>
+<h2 id="using-dynamodb-with-our-express-app">Using <a href="http://docs.aws.amazon.com/amazondynamodb/latest/gettingstartedguide/GettingStarted.NodeJs.html" target="_blank">DynamoDB with our Express app</a></h2>
+<p>What is <a href="https://aws.amazon.com/dynamodb/" target="_blank">AWS DynamoDB</a>? What is the price? Where to find docs?<br>Watch the video <a href="https://aws.amazon.com/dynamodb/getting-started/" target="_blank">Introduction to Amazon DynamoDB</a></p>
+<p>If you have not finished the last exercise, here is the repo that you can use as a starting point: <a href="https://github.com/Michael-Antczak/Express-workshop-3" target="_blank">Express with saving</a><br>Use commit b1c85fb8cc97290e6eaef8971f5620b21c2b8e77</p>
+<h3 id="exercise---create-table-in-dynamodb">Exercise - Create table in DynamoDB</h3>
+<ol>
+<li>login to the AWS console and create table DynamoDB. Problems? Why? </li>
+<li>create a table with a name: <strong>cyf-{username}-posts</strong></li>
+<li>look at the structure of our posts in <code>posts.json</code>. We will use <code>title</code> as primary key</li>
+<li>add sort key and use <code>summary</code>. Click <code>Create</code></li>
+<li>try to add an item to the table in the console. Use <code>Items</code> -&gt; <code>Create Item</code>. How to add <code>content</code>? </li>
+<li>try to add few more posts</li>
+</ol>
+<h3 id="exercise---read-posts-from-dynamodb">Exercise - Read posts from DynamoDB</h3>
+<p>We want to change the code in our app inside the <code>\</code> to read posts from DynamoDB. How do we do that? 
+We are going to use AWS SDK for this. </p>
+<ol>
+<li>run <code>npm install --save aws-sdk</code></li>
+<li><a href="http://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/loading-node-credentials-json-file.html" target="_blank">load credentials</a> - create in the root of the project a file called <code>config.json</code>add your access and secret keys<pre class="language-"><code class="lang-js"> <span class="token punctuation">{</span>
+     <span class="token string">&quot;accessKeyId&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;YOUR_ACCESS_KEY&quot;</span><span class="token punctuation">,</span>
+     <span class="token string">&quot;secretAccessKey&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;YOUR_SECRET_KEY&quot;</span><span class="token punctuation">,</span>
+     <span class="token string">&quot;region&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;eu-west-1&quot;</span><span class="token punctuation">,</span>
+     <span class="token string">&quot;endpoint&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;https://dynamodb.eu-west-1.amazonaws.com&quot;</span>
+ <span class="token punctuation">}</span>
+</code></pre>
+</li>
+<li><p>add AWS to the project</p>
+<pre class="language-"><code class="lang-js"> <span class="token comment" spellcheck="true">// Load the SDK for JavaScript</span>
+ <span class="token keyword">const</span> AWS <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;aws-sdk&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ <span class="token comment" spellcheck="true">// Load credentials and set region from JSON file</span>
+ AWS<span class="token punctuation">.</span>config<span class="token punctuation">.</span><span class="token function">loadFromPath</span><span class="token punctuation">(</span><span class="token string">&apos;./config.json&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
+<li><p>now we need to change the route to the root of our project to get the data from Dynamo</p>
+<pre class="language-"><code class="lang-js"> app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">&apos;/&apos;</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+     <span class="token keyword">var</span> docClient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AWS<span class="token punctuation">.</span>DynamoDB<span class="token punctuation">.</span>DocumentClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+     <span class="token keyword">var</span> params <span class="token operator">=</span> <span class="token punctuation">{</span>
+         TableName<span class="token punctuation">:</span> <span class="token string">&quot;cyf-student-posts&quot;</span><span class="token punctuation">,</span>
+         ProjectionExpression<span class="token punctuation">:</span> <span class="token string">&quot;title, summary, content&quot;</span><span class="token punctuation">,</span>
+     <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Scanning posts table.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     docClient<span class="token punctuation">.</span><span class="token function">scan</span><span class="token punctuation">(</span>params<span class="token punctuation">,</span> onScan<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+     <span class="token keyword">function</span> <span class="token function">onScan</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+             console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">&quot;Unable to scan the table. Error JSON:&quot;</span><span class="token punctuation">,</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+             <span class="token comment" spellcheck="true">// print all the posts</span>
+             console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Scan succeeded.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+             <span class="token comment" spellcheck="true">// Here you can test how to access the posts, not needed for the functionality to work, so could be deleted</span>
+             data<span class="token punctuation">.</span>Items<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>post<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+             console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+                     post<span class="token punctuation">.</span>title <span class="token operator">+</span> <span class="token string">&quot;: &quot;</span><span class="token punctuation">,</span>
+                     post<span class="token punctuation">.</span>summary<span class="token punctuation">,</span> <span class="token string">&quot;- content:&quot;</span><span class="token punctuation">,</span> post<span class="token punctuation">.</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+             <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+             res<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">&apos;index&apos;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+                 title<span class="token punctuation">:</span> <span class="token string">&quot;Michael&apos;s profile&quot;</span><span class="token punctuation">,</span>
+                 subheading<span class="token punctuation">:</span> <span class="token string">&quot;A modern Website built in Node with Handlebars&quot;</span><span class="token punctuation">,</span>
+                 posts<span class="token punctuation">:</span> data<span class="token punctuation">.</span>Items
+             <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token punctuation">}</span>
+     <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
+</ol>
+<p>Discussion: do you think this is a good way to read the posts? If not, why not? How can it be done differently? </p>
+<h3 id="exercise---write-posts-to-dynamodb">Exercise - Write posts to DynamoDB</h3>
+<p>If you have not finished, you can use the Express app and checkout the commit: 2e4722ac2828da8f6b00d9e63727e9116a08efbd<br>We now have to find a way to write our new posts from the app to the DynamoDB. How can we do that? What needs to be changed? </p>
+<ol>
+<li>we need to change the POST behaviour to the <code>/admin</code> endpoint</li>
+<li>remove the code from this route and just add <code>console.log(req.body)</code>. Try it out</li>
+<li><p>add to the route 
+```js
+app.post(&apos;/admin&apos;, function (req, res) {</p>
+<p> // Create the DynamoDB service object
+ var docClient = new AWS.DynamoDB.DocumentClient();</p>
+<p> var params = {</p>
+<pre class="language-"><code> TableName: &apos;cyf-student-posts&apos;,
+ Item:{
+     &apos;title&apos; : req.body.title,
+     &apos;summary&apos; : req.body.summary,
+     &apos;content&apos; : req.body.contents,
+ }
+</code></pre><p> };</p>
+<p> // Call DynamoDB to add the item to the table
+ console.log(&quot;Adding a new item...&quot;);
+ docClient.put(params, function(err, data) {</p>
+<pre class="language-"><code> if (err) {
+     console.error(&quot;Unable to add item. Error JSON:&quot;, JSON.stringify(err, null, 2));
+ } else {
+     console.log(&quot;Added item:&quot;, JSON.stringify(data, null, 2));
+ }
+</code></pre><p> });</p>
+</li>
+</ol>
+<p>});</p>
+<pre class="language-"><code>1. change `add-posts.js` behaviour to redirect to the main page, since we don&apos;t really wait for any reply from the server
+
+# Express Generator
+
+Link to the tutorial https://expressjs.com/en/starter/generator.html
+
+# Middleware
+Middleware functions are functions that have access to the request object, `req`, the response object, `res`, and the next middleware function in the application&#x2019;s request-response cycle. The next middleware function is commonly denoted by a variable named `next`.
+
+Middleware functions can perform the following tasks:
+
+- Execute any code
+- Make changes to the request and the response objects
+- End the request-response cycle
+- Call the next middleware function in the stack
+
+&gt; **Exercise**: We&apos;ve already used one built-in middleware in our app - what was it?
+
+## Setup an error handler
+You define error-handling middleware in the same way as other middleware, except with four arguments instead of three; specifically with the signature (err, req, res, next):
+
+```js
+app.use(function (err, req, res, next) {
+  console.error(err.stack)
+  res.status(500).send(&apos;Something broke!&apos;)
+})
+</code></pre><h3 id="lets-write-a-custom-middleware">Let&apos;s write a custom middleware</h3>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> myLogger <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;LOGGED&apos;</span><span class="token punctuation">)</span>
+  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>myLogger<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p><strong>Exercise</strong>: Follow the tutorial for writing <code>requestTime</code> at <a href="https://expressjs.com/en/guide/writing-middleware.html" target="_blank">https://expressjs.com/en/guide/writing-middleware.html</a> and add it to your own application</p>
+</blockquote>
+<h1 id="homework">Homework</h1>
+<p>You can use this as a starting point - <a href="https://github.com/Michael-Antczak/Express-workshop-3" target="_blank">https://github.com/Michael-Antczak/Express-workshop-3</a></p>
+<ol>
+<li>Exercise - Handle &quot;Page Not Found&quot;</li>
+<li>Walk through the code again and make sure you understand what it does</li>
+<li>if you have time you can try to expand on the My CV project that we worked on today:
+ a) sort posts alphabetically
+ b) when the new post is added to the database, send an email to yourself about that (edited)</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="lesson2.html" class="navigation navigation-prev " aria-label="Previous page: Week 13 - Templating and APIs ">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="lesson4.html" class="navigation navigation-next " aria-label="Next page: Week 15 - MongoDB">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Week 14 - More Node, Middleware and Dynamo","level":"1.6.3","depth":2,"next":{"title":"Week 15 - MongoDB","level":"1.6.4","depth":2,"path":"node-db/lesson4.md","ref":"node-db/lesson4.md","articles":[]},"previous":{"title":"Week 13 - Templating and APIs ","level":"1.6.2","depth":2,"path":"node-db/lesson2.md","ref":"node-db/lesson2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/lesson3.md","mtime":"2018-02-12T18:17:51.740Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-12T18:19:11.639Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
